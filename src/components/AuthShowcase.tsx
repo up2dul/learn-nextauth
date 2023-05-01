@@ -5,9 +5,11 @@ const AuthShowcase = () => {
 
   if (session) {
     return (
-      <section>
+      <section className='flex flex-col items-center gap-3'>
+        <p>Session expires: {new Date(session.expires).toUTCString()}</p>
         <p>
-          Signed in as {session.user?.name} - {session.user?.email}
+          Signed in as <strong>{session.user?.name}</strong> -{' '}
+          {session.user?.email}
         </p>
         <button className='bg-pink px-3 py-1' onClick={() => void signOut()}>
           Sign out
@@ -18,8 +20,11 @@ const AuthShowcase = () => {
 
   return (
     <section>
-      Not signed in <br />
-      <button className='bg-yellow text-dark px-3 py-1' onClick={() => void signIn()}>
+      <p>Not signed in</p>
+      <button
+        className='bg-yellow px-3 py-1 text-dark'
+        onClick={() => void signIn()}
+      >
         Sign in
       </button>
     </section>
